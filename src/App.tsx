@@ -23,6 +23,7 @@ function App() {
 		// 		console.log('path:', path, '-mod:', mod);
 		// 	})
 		// }
+		console.log(import.meta.env);
 	}
 	return (
 		<div className={classes.app}>
