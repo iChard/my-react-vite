@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import classes from './App.module.less';
+import classes from './Comp.module.scss';
+import data from './data.json';
 
 // import logo from './logo.svg';
 
@@ -23,7 +24,8 @@ function App() {
 		// 		console.log('path:', path, '-mod:', mod);
 		// 	})
 		// }
-		console.log(import.meta.env);
+		
+		console.log(data);
 	}
 	return (
 		<div className={classes.app}>
@@ -59,6 +61,7 @@ function App() {
 				</p>
 				<button onClick={printModules}>Print Modules glob</button>
 				<button onClick={printModulesEager}>Print Modules globEager</button>
+				<div className={classes.theme}>1</div>
 			</header>
 		</div>
 	)
