@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
-import classes from './Comp.module.scss';
+import classes, { themeColor } from './Comp.module.scss';
 import data from './data.json';
+import logo from './logo.svg?url';
 
-// import logo from './logo.svg';
-
-const modules  = import.meta.glob('./modules/*.ts')
-const modulesEager  = import.meta.glob('./modules/*.ts')
 function App() {
 	const [count, setCount] = useState(0)
 	function printModules() {
+		const modules  = import.meta.glob('./modules/*.ts')
 		console.log('modules:', modules);
+
 		for(const path in modules) {
 			modules[path]().then(mod => {
 				console.log('path:', path, '-mod:', mod);
@@ -18,7 +17,8 @@ function App() {
 		}
 	}
 	function printModulesEager() {
-		console.log('modulesEager:',modulesEager);
+		const modulesEager  = import.meta.globEager('./modules/*.ts')
+		console.log('modulesEage1r:',modulesEager);
 		// for(const path in modulesEager) {
 		// 	modulesEager[path]().then(mod => {
 		// 		console.log('path:', path, '-mod:', mod);
@@ -30,7 +30,7 @@ function App() {
 	return (
 		<div className={classes.app}>
 			<header className={classes.appHeader}>
-				{/* <img src={logo} className={classes.appLogo} alt="logo" /> */}
+				<img src={logo} className={classes.appLogo} alt="logo" />
 				<p>Hello Vite + React!</p>
 				<p>
 					<button onClick={() => setCount((count) => count + 1)}>
@@ -61,7 +61,7 @@ function App() {
 				</p>
 				<button onClick={printModules}>Print Modules glob</button>
 				<button onClick={printModulesEager}>Print Modules globEager</button>
-				<div className={classes.theme}>1</div>
+				<div className={themeColor}>1</div>
 			</header>
 		</div>
 	)

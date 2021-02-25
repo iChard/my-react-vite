@@ -7,6 +7,7 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [reactRefresh()],
+    
     alias: [{
         find: "@",
         replacement: path.resolve(__dirname, "src")
@@ -16,6 +17,7 @@ export default defineConfig({
             scopeBehaviour: 'local',
             generateScopedName: '[name]_[local]_[hash:base64:5]',
             hashPrefix: 'prefix',
+            localsConvention: 'camelCaseOnly'
         },
         postcss: path.resolve(__dirname, './postcss.config.js'),
 
@@ -47,10 +49,14 @@ export default defineConfig({
         },
         assetsInlineLimit: 4096,// 小于这个值会被内联为base64，以减少http请求
         cssCodeSplit: true,// 当为false时整个项目的所有chunk的css都被打包到一个css文件中
-        minify: 'terser'
+        minify: 'terser',
     },
     optimizeDeps: {
 
     },
+    esbuild: {
+
+    },
+    
 })
 
